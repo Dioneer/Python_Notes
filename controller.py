@@ -14,8 +14,11 @@ def start():
 		user_select = view.show_menu(text.main_menu)
 		match user_select:
 			case 1:
-				model.open_file()
-				view.print_msg(text.load_successfull)
+				res = model.open_file()
+				if res:
+					view.print_msg(text.empty_start)
+				else:
+					view.print_msg(text.load_successfull)
 			case 2:
 				notes = model.your_notes
 				view.show_notes(notes, text.empty_notes)

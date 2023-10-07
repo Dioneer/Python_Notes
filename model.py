@@ -1,5 +1,6 @@
 import json
 import datetime
+import os
 
 original_notes = []
 your_notes = []
@@ -7,6 +8,8 @@ path = 'notes.json'
 
 def open_file():
 	with open(path, 'r', encoding='UTF-8') as file:
+		if (os.stat('notes.json').st_size == 0):
+			return 'File is empty!'
 		get_notes = json.load(file)
 	for i in get_notes:
 		notes = {}
