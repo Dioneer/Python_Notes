@@ -23,7 +23,6 @@ def open_file():
 		notes[date] = [{'id': uid},{'title': title},{'body':body}]
 		your_notes.append(notes)
 		original_notes.append(notes)
-	print(your_notes)
 
 def add_contact(add:list[dict[str,str]]):
 	notes = {}
@@ -51,7 +50,6 @@ def search_function(item: str)-> dict[str,list[dict[str,str]]]:
 				body = value[2].get('body')
 				find[date] = [{'id': uid},{'title': title},{'body':body}]
 	result.append(find)
-	print(result)
 	return result
 	
 def change(list_find:list[dict[str,list[dict[str,str]]]], new: str):

@@ -27,7 +27,6 @@ def show_notes(data: list[dict[str,list[dict[str,str]]]], msg: str):
 	if data:
 		lists = sorted(data, key=lambda k: list(k)[0])
 		print('\n' + '='*100 + '\n')
-		print(lists)
 		for i in lists:
 			for key, value in i.items():
 				date = key
