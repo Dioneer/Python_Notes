@@ -25,8 +25,10 @@ def show_menu(menu: list[str])-> int:
 
 def show_notes(data: list[dict[str,list[dict[str,str]]]], msg: str):
 	if data:
+		lists = sorted(data, key=lambda k: list(k)[0])
 		print('\n' + '='*100 + '\n')
-		for i in data:
+		print(lists)
+		for i in lists:
 			for key, value in i.items():
 				date = key
 				uid = value[0].get('id')

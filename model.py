@@ -7,9 +7,11 @@ your_notes = []
 path = 'notes.json'
 
 def open_file():
+	original_notes.clear()
+	your_notes.clear()
 	with open(path, 'r', encoding='UTF-8') as file:
 		if (os.stat('notes.json').st_size == 0):
-			return 'File is empty!'
+			return
 		get_notes = json.load(file)
 	for i in get_notes:
 		notes = {}
@@ -21,7 +23,7 @@ def open_file():
 		notes[date] = [{'id': uid},{'title': title},{'body':body}]
 		your_notes.append(notes)
 		original_notes.append(notes)
-	print(original_notes)
+	print(your_notes)
 
 def add_contact(add:list[dict[str,str]]):
 	notes = {}
@@ -57,11 +59,11 @@ def change(list_find:list[dict[str,list[dict[str,str]]]], new: str):
 	dt_old = ''
 	count=0
 	for i in list_find:
-		for key, value in i.items():
+		for key in i.keys():
 			dt_old = key
 	for i in list_find:
 		for _, value in i.items():
-			dt_now = str(datetime.datetime.now())
+			dt_now= str(datetime.datetime.now())
 			uid = value[0].get('id')
 			title = value[1].get('title')
 			body = value[2].get('body')
@@ -73,11 +75,9 @@ def change(list_find:list[dict[str,list[dict[str,str]]]], new: str):
 	for i in your_notes:
 		if(dt_old in i.keys()):
 			i.keys() == dt_old
-			print(count)
 			break
 		else:
 			count+=1
-	print(len(your_notes), count)
 	your_notes[count] = notes
 
 def delete_text(res:list[dict[str,list[dict[str,str]]]]):
